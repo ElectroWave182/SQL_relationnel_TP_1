@@ -1,0 +1,36 @@
+Question 1 :
+____________
+
+
+Client (idPersonne, nom, prenom)
+	----------
+
+Modele (nomModele, marque, puissance)
+	---------
+
+Vehicule (noImm, leModele (# Modele.nomModele))
+	  -----
+
+Location (unClient (# Client.idPersonne), unVehicule (# Vehicule.noImm), duree)
+									 -----
+
+
+Question 2 :
+____________
+
+
+1)
+select distinct marque, count(nomModele)
+from Modele
+group by marque;
+
+2)
+select distinct marque, count(noImm)
+from Modele, Vehicule
+where upper(leModele) = upper(nomModele)
+group by marque;
+
+3)
+select distinct unClient, count(unClient)
+from Location
+group by unClient;
